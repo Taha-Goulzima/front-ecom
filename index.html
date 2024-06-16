@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CANDDELD</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="sidebar close">
+      <div class="logo-details">
+        <img src="logo/WhatsApp Image 2024-05-11 at 11.50.40 PM.jpeg" class="bigLogo" />
+        <span class="logo_name">CANDDELD</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="link_name">Gestion Produit</span>
+          </a>
+        </li>
+        <li>
+          <div class="iocn-link">
+            <a href="stock.html">
+              <i class="bx bx-collection"></i>
+              <span class="link_name">Opérations Stock</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="iocn-link">
+            <a href="Vent.html">
+              <i class="bx bx-book-alt"></i>
+              <span class="link_name">Opération Ventes</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="profile-details">
+            <div class="profile-content"></div>
+            <div class="name-job">
+              <div class="profile_name">Taha Goulzima</div>
+              <div class="job">Web Desginer</div>
+            </div>
+            <i class="bx bx-log-out"></i>
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <section class="home-section">
+      <div class="home-content">
+        <i class="bx bx-menu"></i>
+        <span class="text">Produits</span>
+        <div class="head">
+          <input id="search-product" type="search" class="search" placeholder="Search...." />
+          <i class="fa-solid fa-magnifying-glass" onclick="fetchAndDisplaySellOperations()"></i>
+        </div>
+      </div>
+      <div class="body">
+        <button id="openPopup" class"addToStock" onclick="alertAddProducts()">Nouveau Produit</button>
+
+    <div class="popup">
+     <div class="popupContant">
+         <h2>nouveau produit</h2>
+         <input type="text" placeholder="nom du produit" id="productName">
+         <div class="btn">
+         <button class="confirm" id="confirmButton" onclick="addProductFromInput()">confirm</button>
+         <button class="cancel" id="cancelButton">cancel</button>
+     </div>
+    </div>
+    </div>
+    <div class="table-container">
+
+        <table id="productTable">
+          <tr>
+            <th>#</th>
+            <th>Titre</th>
+            <th>Qte en stock</th>
+            <th>Qte Vendue</th>
+            <th></th>
+          <!-- </tr>
+          <tr>
+           
+            <td>
+              <i onclick="editProduct()" class="fa fa-edit" style="cursor: pointer"></i>
+  
+              <div class="edit">
+                <div class="editContant">
+                  <h2>Edit Product</h2>
+                  <input type="text" placeholder="Product Name" id="productName" />
+                  <div class="btn">
+                    <button class="cancel" id="cancelButton">Cancel</button>
+                    <button class="confirm" id="editConfirmButton">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            
+              <i onclick="deleteProduct()" class="fa fa-trash" style="cursor: pointer"></i>
+              
+              
+              <div class="delete">
+                <div class="deleteContant">
+                  <h2>Delete Product</h2>
+                  <p>Are you sure you want to delete this product?</p>
+                  <div class="btn">
+                    <button class="cancel" id="deleteCancel">Cancel</button>
+                    <button class="confirm" id="deleteConfirmButton">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            
+            </td>
+          </tr>
+          <tr>
+          
+            <td>
+              <i onclick="editProduct()" class="fa fa-edit" style="cursor: pointer"></i>
+  
+              <div class="edit">
+                <div class="editContant">
+                  <h2>Edit Product</h2>
+                  <input type="text" placeholder="Product Name" id="productName" />
+                  <div class="btn">
+                    <button class="cancel" id="cancelButton">Cancel</button>
+                    <button class="confirm" id="editConfirmButton">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            
+             
+              <i onclick="deleteProduct()" class="fa fa-trash" style="cursor: pointer"></i>
+              
+              
+              <div class="delete">
+                <div class="deleteContant">
+                  <h2>Delete Product</h2>
+                  <p>Are you sure you want to delete this product?</p>
+                  <div class="btn">
+                    <button class="cancel" id="deleteCancel">Cancel</button>
+                    <button class="confirm" id="deleteConfirmButton">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            
+            </td>
+          </tr>
+          <tr>
+      
+            <td>
+              <i onclick="editProduct()" class="fa fa-edit" style="cursor: pointer"></i>
+  
+              
+              <div class="edit">
+                <div class="editContant">
+                  <h2>Edit Product</h2>
+                  <input type="text" placeholder="Product Name" id="productName" />
+                  <div class="btn">
+                    <button class="cancel" id="cancelButton">Cancel</button>
+                    <button class="confirm" id="editConfirmButton">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            
+              <i onclick="deleteProduct()" class="fa fa-trash" style="cursor: pointer"></i>
+              
+             
+              <div class="delete">
+                <div class="deleteContant">
+                  <h2>Delete Product</h2>
+                  <p>Are you sure you want to delete this product?</p>
+                  <div class="btn">
+                    <button class="cancel" id="deleteCancel">Cancel</button>
+                    <button class="confirm" id="deleteConfirmButton">Confirm</button>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr> -->
+        </table>
+      </div>
+      </div>
+    </section>
+  
+  
+   
+
+    <script src="/apis/products-api.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
